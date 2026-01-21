@@ -51,6 +51,7 @@ try:
 
     print("Data uploaded to MongoDB successfully!")
 
+
 except Exception as e:
     print(f"An error occurred: {e}")
 
@@ -58,3 +59,5 @@ finally:
     # Close the MongoDB connection
     if client:
         client.close()
+
+
