@@ -3,7 +3,8 @@ from pyspark.sql import functions
 
 
 
-spark = SparkSession.builder.appName("DatabricksConnectAzureStorage").getOrCreate().getOrCreate() # Create Spark Session if not exists
+spark = SparkSession.builder.appName("DatabricksConnectAzureStorage")\
+        .getOrCreate() # Create Spark Session if not exists
 
 
 # ==========================================
@@ -38,4 +39,5 @@ print(f"Kết nối thành công tới: {base_path}")
 # ==========================================
 # file_name = "olist_orders_dataset.csv"
 # df = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load(base_path + file_name)
+df = spark.read.csv(base_path + "product_category_name_translation.csv", header=True, inferSchema=True)
 # display(df.limit(5))
