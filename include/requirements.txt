@@ -1,0 +1,10 @@
+pandas==2.2.3
+
+pyarrow  
+
+pymongo
+
+pyspark
+
+mysql 
+
