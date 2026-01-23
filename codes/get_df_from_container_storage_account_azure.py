@@ -1,5 +1,5 @@
 
-# base_path = "abfss://olistdatagolistdatastorageaccount.dfs.core.windows.net/bronze/"
+# base_path = f"abfss://{container_name}@{storage_account}.dfs.core.windows.net/bronze/"
 
 # orders_path = base_path + "olist_orders_dataset.csv"
 # payments_path = base_path + "olist_order_payments_dataset.csv"
