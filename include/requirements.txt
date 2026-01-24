@@ -6,5 +6,5 @@ pymongo
 
 pyspark
 
-mysql 
+mysqlClient
 
