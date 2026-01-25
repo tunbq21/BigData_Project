@@ -182,3 +182,9 @@ def calculate_running_total_pd(df, partition_col, sort_col, value_col):
     df[f"running_total_{value_col}"] = df.groupby(partition_col)[value_col].cumsum()
     return df
 
+
+#================================================================================================================
+# print dataframe columns and types 
+
+def print_df_schema_pd(df):
+    print(df.dtypes)

@@ -35,6 +35,8 @@ def cast_column_if_exists(df, column_name, target_type):
         print(f"Bỏ qua Cast: Cột '{column_name}' không tồn tại.")
         return df
 
+
+
 # ================================================================================================================
 
 def delete_column_if_exists(df, column_name):
@@ -347,3 +349,5 @@ def calculate_running_total(df, partition_col, sort_col, value_col):
     
     new_col_name = f"running_total_{value_col}"
     return df.withColumn(new_col_name, spark_sum(col(value_col)).over(window_spec))
+
+
