@@ -8,26 +8,23 @@ spark = SparkSession.builder.appName("DatabricksConnectAzureStorage")\
 
 
 # ==========================================
-# 1. CẤU HÌNH THÔNG SỐ (CHỈ SỬA PHẦN NÀY)
-# ==========================================
-storage_account = "datastaccount" #example: yourstorageaccount
-container_name  = "olistdata" #example: yourcontainername
-folder_path     = "bronze"  # Để trống "" nếu file nằm ở root container 
+storage_account = ""
+application_id = "" 
+directory_id = "" 
+secret_value = "" 
+container_name = ""
 
-# Thông tin từ App Registration (Service Principal)
-application_id  = "" 
-directory_id    = ""
-secret_value    = ""
-
-# ==========================================
-# 2. THIẾT LẬP KẾT NỐI (GIỮ NGUYÊN)
-# ==========================================
-# Cấu hình xác thực OAuth2
+# Cấu hình xác thực OAuth
 spark.conf.set(f"fs.azure.account.auth.type.{storage_account}.dfs.core.windows.net", "OAuth")
+
+# DÒNG QUAN TRỌNG BẠN ĐANG THIẾU:
 spark.conf.set(f"fs.azure.account.oauth.provider.type.{storage_account}.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+
+# Các dòng ID và Secret
 spark.conf.set(f"fs.azure.account.oauth2.client.id.{storage_account}.dfs.core.windows.net", application_id)
 spark.conf.set(f"fs.azure.account.oauth2.client.secret.{storage_account}.dfs.core.windows.net", secret_value)
 spark.conf.set(f"fs.azure.account.oauth2.client.endpoint.{storage_account}.dfs.core.windows.net", f"https://login.microsoftonline.com/{directory_id}/oauth2/token")
+
 
 # Tạo đường dẫn gốc (Base Path)
 base_path = f"abfss://{container_name}@{storage_account}.dfs.core.windows.net/{folder_path}/"
