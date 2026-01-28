@@ -15,7 +15,6 @@ csv_file_path = "/content/drive/MyDrive/DE-Data_Engineer/olist_order_payments_da
 # Table name where the data will be uploaded
 table_name = "olist_order_payments"
 
-
 try:
     # Step 1: Establish a connection to MySQL server
     connection = mysql.connector.connect(
