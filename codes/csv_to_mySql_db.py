@@ -2,6 +2,7 @@ import pandas as pd
 import mysql.connector
 from mysql.connector import Error
 
+
 # Connection details
 hostname = "efm4vy.h.filess.io"
 database = "olistproject_mysqldb_shoottitle"
