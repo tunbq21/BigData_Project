@@ -5,7 +5,7 @@ from mysql.connector import Error
 # Connection details
 hostname = "efm4vy.h.filess.io"
 database = "olistproject_mysqldb_shoottitle"
-port = "61031"
+port = ""
 username = "olistproject_mysqldb_shoottitle"
 password = "6130e1f10b44748277d57480194068966bc5dcd6"
 
