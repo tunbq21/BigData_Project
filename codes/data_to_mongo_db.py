@@ -1,4 +1,3 @@
-# from pymongo import MongoClient
 
 # hostname = "p8io3.h.filess.io"
 # database = "olistDataNoSQL_becomingit"
