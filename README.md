@@ -1,61 +1,51 @@
-Azure Big Data Pipeline: Medallion Architecture Implementation
-📌 Project Overview
-This project demonstrates a scalable end-to-end ETL pipeline built on the Microsoft Azure ecosystem. Following the Medallion Architecture (Bronze, Silver, Gold), the pipeline transforms multi-source raw data into high-quality, business-ready datasets optimized for analytical reporting.
+# 💠 Azure Big Data Pipeline (Medallion Architecture)
 
-🏗 System Architecture
-The pipeline follows a structured data lakehouse pattern:
+> **Architected a scalable end-to-end ETL pipeline transforming multi-source raw data into business-ready datasets using Microsoft Azure.**
 
-Ingestion (Bronze): Automated data movement from various sources into Azure Data Lake Storage (ADLS) Gen2 using Azure Data Factory (ADF).
+---
 
-Refinement (Silver): Data cleaning, schema enforcement, and validation using PySpark on Databricks.
+## 🛠 Tech Stack Overview
 
-Aggregation (Gold): Final business logic and complex aggregations performed via Azure Synapse Analytics to produce specialized datasets for BI.
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Orchestration** | **Azure Data Factory (ADF)** | Automated ingestion & validation |
+| **Storage** | **ADLS Gen2 & Delta Lake** | Scalable Data Lakehouse |
+| **Compute** | **Azure Databricks (PySpark)** | Distributed ETL & Schema enforcement |
+| **Warehouse** | **Azure Synapse Analytics** | SQL-based aggregation for BI |
 
-🛠 Tech Stack
-Orchestration: Azure Data Factory (ADF)
+---
 
-Storage: Azure Data Lake Storage (ADLS) Gen2, Delta Lake
+## 🏗 Medallion Architecture Implementation
 
-Compute: Azure Databricks (PySpark)
+### 🥉 Bronze Layer (Ingestion)
+* **Objective:** Automated data movement from multi-source raw systems.
+* **Implementation:** Orchestrated ingestion with **Azure Data Factory**.
+* **Key Feature:** Implemented **Data Validation Checks** before landing records to ensure raw data integrity.
 
-Warehouse: Azure Synapse Analytics (SQL)
+### 🥈 Silver Layer (Transformation)
+* **Objective:** Cleaned, filtered, and augmented data for downstream use.
+* **Implementation:** Utilized **PySpark on Databricks** for complex transformations.
+* **Key Feature:** Enforced **Strict Schemas** and deduplication, significantly improving data quality via Delta Lake.
 
-Data Format: Parquet, Delta
+### 🥇 Gold Layer (Aggregated)
+* **Objective:** Business-level aggregates and KPIs for high-performance reporting.
+* **Implementation:** Developed SQL-based logic in **Azure Synapse Analytics**.
+* **Key Feature:** Derived **Key Business Metrics**, enabling lightning-fast BI dashboard consumption.
 
-📂 Key Features
-Automated Data Ingestion: Implemented ADF pipelines with robust data validation checks to ensure integrity before landing in the Bronze layer.
+---
 
-Schema Enforcement: Leveraged Delta Lake on Databricks to prevent data corruption and maintain strict schema standards during the Silver transformation phase.
+## 🌟 Key Engineering Highlights
 
-Complex ETL Logic: Utilized PySpark for heavy-duty data transformations, including deduplication, filtering, and joining disparate datasets.
+* ⚙️ **Scalability:** Architected a pipeline capable of handling high-volume, multi-source raw data.
+* 🛡️ **Reliability:** Leveraged Delta Lake’s ACID transactions to ensure 100% data consistency.
+* 📊 **Performance:** Optimized SQL aggregation logic to reduce BI query latency.
 
-Performance Optimization: Designed SQL-based aggregation logic in Synapse Analytics to facilitate high-performance querying for Gold layer reporting.
+---
 
-🚀 Pipeline Workflow
-🥉 Bronze Layer (Raw)
-Data is ingested in its native format.
+## 📂 Project Structure
 
-Acts as the "Source of Truth" with 100% data fidelity.
-
-Tool: Azure Data Factory.
-
-🥈 Silver Layer (Filtered/Cleaned)
-Applied PySpark transformations to clean nulls, standardize formats, and enforce schemas.
-
-Data is stored in Delta format to support ACID transactions.
-
-Tool: Azure Databricks.
-
-🥇 Gold Layer (Aggregated)
-Final layer optimized for consumption.
-
-Contains key business metrics and KPIs derived through Spark SQL or Synapse SQL.
-
-Tool: Azure Synapse Analytics.
-
-📈 Key Metrics & Results
-Scalability: Successfully handles multi-source ingestion with parallel processing.
-
-Data Quality: Reduced data errors by implementing strict validation at the ingestion gate.
-
-Performance: Optimized query response times for BI tools by pre-aggregating metrics in the Gold layer.
+```bash
+├── 📁 adf-pipelines/         # Azure Data Factory JSON & Linked Services
+├── 📁 databricks-notebooks/  # PySpark ETL (Bronze-to-Silver-to-Gold)
+├── 📁 synapse-scripts/       # SQL Views & Business Aggregations
+└── 📁 documentation/         # Architecture diagrams & Metadata
